@@ -26,6 +26,7 @@ class Log {
 public:
 	/* Prototypes & Constructor */
 	Log(string); // constructor
+	~Log(){ cout << "Logify deconstructed" << endl; }; // deconstructor
 	void showFileName(void); // show the filename
 	void go(void); // do it!
 	
@@ -84,15 +85,14 @@ void Log::go(){
 	unique_copy( ipList.begin(), ipList.end(), back_inserter( ipListUnique ) );
 	cout << "----------------------------------------" << endl;
 	cout << "File size: " << this->FileSize(fileName.c_str()) << "GB" << endl; 
-	cout << "IPs read in: " << ipList.size() << endl;
 	cout << "Unique IPs: " << ipListUnique.size() << endl;
-	cout << "----------------------------------------" << endl;
-	
+	cout << "----------------------------------------" << endl;	
 }
 
 int main (int argc, char * const argv[]) {
-	Log Logify(argv[1]);
-	//Log Logify("access.log");
-	Logify.go();
+	for (int x = 1; x < argc; x++) {
+		Log Logify(argv[x]);
+		Logify.go();
+	}
 	return 0;
 }
