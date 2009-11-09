@@ -26,7 +26,10 @@ class Log {
 public:
 	/* Prototypes & Constructor */
 	Log(string); // constructor
-	~Log(){ cout << "Logify deconstructed" << endl; ipList.clear(); ipListUnique.clear(); }; // deconstructor
+	~Log(){ cout << "Logify deconstructed" << endl; 
+			vector<string>().swap(ipList); // free mem
+			vector<string>().swap(ipListUnique);  // free mem
+	}; // deconstructor
 	void showFileName(void); // show the filename
 	void go(void); // do it!
 	
